@@ -1,6 +1,8 @@
 package com.mygdx.game;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.ScreenAdapter;
+import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
@@ -8,15 +10,25 @@ public class GameScreen extends ScreenAdapter{
 
     private PacmanGame pacmanGame;
     private Texture pacmanImg;
+    private int x;
+    private int y;
+    
     public GameScreen(PacmanGame pacmanGame) {
         this.pacmanGame = pacmanGame;
         pacmanImg = new Texture("pacman.png");
+        x = 100;
+        y = 100;
     }
+    
     public void render (float delta) {
-		System.out.println("Hello " + delta);
+	//	System.out.println("Hello " + delta);
+    	Gdx.gl.glClearColor(0, 0, 0, 1);
+        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+    	x+=5;
 		SpriteBatch batch = pacmanGame.batch;
 	    batch.begin();
-	    batch.draw(pacmanImg, 100, 100);
+	//    batch.draw(pacmanImg, 100, 100);
+	    batch.draw(pacmanImg, x, y);
 	    batch.end();
 	}
 	
