@@ -1,6 +1,7 @@
 package com.mygdx.game;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
@@ -24,7 +25,8 @@ public class GameScreen extends ScreenAdapter{
 	//	System.out.println("Hello " + delta);
     	Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-    	x+=5;
+    //	x+=5;
+        update(delta);
 		SpriteBatch batch = pacmanGame.batch;
 	    batch.begin();
 	//    batch.draw(pacmanImg, 100, 100);
@@ -32,4 +34,18 @@ public class GameScreen extends ScreenAdapter{
 	    batch.end();
 	}
 	
+    private void update(float delta) {
+    	if(Gdx.input.isKeyPressed(Keys.LEFT)) {
+            x -= 10;
+        }
+        if(Gdx.input.isKeyPressed(Keys.RIGHT)) {
+            x += 10;
+        }
+        if(Gdx.input.isKeyPressed(Keys.UP)) {
+            y += 10;
+        }
+        if(Gdx.input.isKeyPressed(Keys.DOWN)) {
+            y -= 10;
+        }
+    }
 }
